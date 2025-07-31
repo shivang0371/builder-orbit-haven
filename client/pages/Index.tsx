@@ -1,7 +1,22 @@
 import { useState, useEffect } from "react";
-import { Shield, Activity, BarChart3, Settings, Globe, Server, Users, Download } from "lucide-react";
+import {
+  Shield,
+  Activity,
+  BarChart3,
+  Settings,
+  Globe,
+  Server,
+  Users,
+  Download,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -19,9 +34,9 @@ export default function Index() {
   useEffect(() => {
     const interval = setInterval(() => {
       if (isBlocking) {
-        setBlockedAds(prev => prev + Math.floor(Math.random() * 3) + 1);
-        setTimeSaved(prev => prev + Math.random() * 0.15);
-        setBandwidthSaved(prev => prev + Math.random() * 0.03);
+        setBlockedAds((prev) => prev + Math.floor(Math.random() * 3) + 1);
+        setTimeSaved((prev) => prev + Math.random() * 0.15);
+        setBandwidthSaved((prev) => prev + Math.random() * 0.03);
       }
     }, 4000);
 
@@ -29,64 +44,64 @@ export default function Index() {
   }, [isBlocking]);
 
   const stats = [
-    { 
-      label: "Ads Blocked", 
-      value: blockedAds.toLocaleString(), 
-      icon: Shield, 
+    {
+      label: "Ads Blocked",
+      value: blockedAds.toLocaleString(),
+      icon: Shield,
       color: "text-emerald-600",
-      change: "+12% vs yesterday"
+      change: "+12% vs yesterday",
     },
-    { 
-      label: "Time Saved", 
-      value: `${timeSaved.toFixed(1)} min`, 
-      icon: Activity, 
+    {
+      label: "Time Saved",
+      value: `${timeSaved.toFixed(1)} min`,
+      icon: Activity,
       color: "text-blue-600",
-      change: "~2.4 hours this week"
+      change: "~2.4 hours this week",
     },
-    { 
-      label: "Bandwidth Saved", 
-      value: `${bandwidthSaved.toFixed(2)} GB`, 
-      icon: BarChart3, 
+    {
+      label: "Bandwidth Saved",
+      value: `${bandwidthSaved.toFixed(2)} GB`,
+      icon: BarChart3,
       color: "text-purple-600",
-      change: "22.1 GB this month"
+      change: "22.1 GB this month",
     },
-    { 
-      label: "Protected Sessions", 
-      value: "4", 
-      icon: Users, 
+    {
+      label: "Protected Sessions",
+      value: "4",
+      icon: Users,
       color: "text-orange-600",
-      change: "Active across devices"
-    }
+      change: "Active across devices",
+    },
   ];
 
   const recentActivity = [
-    { 
-      time: new Date().toLocaleTimeString(), 
-      action: "YouTube pre-roll advertisement blocked", 
-      domain: "youtube.com", 
+    {
+      time: new Date().toLocaleTimeString(),
+      action: "YouTube pre-roll advertisement blocked",
+      domain: "youtube.com",
       type: "blocked",
-      size: "2.3 MB"
+      size: "2.3 MB",
     },
-    { 
-      time: new Date(Date.now() - 30000).toLocaleTimeString(), 
-      action: "Overlay banner intercepted", 
-      domain: "youtube.com", 
+    {
+      time: new Date(Date.now() - 30000).toLocaleTimeString(),
+      action: "Overlay banner intercepted",
+      domain: "youtube.com",
       type: "blocked",
-      size: "1.8 MB"
+      size: "1.8 MB",
     },
-    { 
-      time: new Date(Date.now() - 75000).toLocaleTimeString(), 
-      action: "Tracking script from DoubleClick filtered", 
-      domain: "googlevideo.com", 
+    {
+      time: new Date(Date.now() - 75000).toLocaleTimeString(),
+      action: "Tracking script from DoubleClick filtered",
+      domain: "googlevideo.com",
       type: "filtered",
-      size: "0.4 MB"
+      size: "0.4 MB",
     },
-    { 
-      time: new Date(Date.now() - 120000).toLocaleTimeString(), 
-      action: "Video advertisement skipped", 
-      domain: "youtube.com", 
+    {
+      time: new Date(Date.now() - 120000).toLocaleTimeString(),
+      action: "Video advertisement skipped",
+      domain: "youtube.com",
       type: "blocked",
-      size: "4.1 MB"
+      size: "4.1 MB",
     },
   ];
 
@@ -114,9 +129,11 @@ export default function Index() {
                 </p>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-3">
-              <Badge variant={proxyStatus === "running" ? "default" : "secondary"}>
+              <Badge
+                variant={proxyStatus === "running" ? "default" : "secondary"}
+              >
                 {proxyStatus === "running" ? "Active" : "Inactive"}
               </Badge>
               <Button variant="outline" size="sm">
@@ -134,15 +151,20 @@ export default function Index() {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle className="text-xl">Content Filtering Control</CardTitle>
+                <CardTitle className="text-xl">
+                  Content Filtering Control
+                </CardTitle>
                 <CardDescription>
-                  {isBlocking 
-                    ? "YouTube advertisements are being blocked automatically" 
+                  {isBlocking
+                    ? "YouTube advertisements are being blocked automatically"
                     : "Content filtering is currently disabled"}
                 </CardDescription>
               </div>
               <div className="flex items-center space-x-3">
-                <Label htmlFor="blocking-toggle" className="text-sm font-medium">
+                <Label
+                  htmlFor="blocking-toggle"
+                  className="text-sm font-medium"
+                >
                   Enable Blocking
                 </Label>
                 <Switch
@@ -206,13 +228,23 @@ export default function Index() {
             <CardContent>
               <div className="space-y-3">
                 {recentActivity.map((activity, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                  <div
+                    key={index}
+                    className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg"
+                  >
                     <div className="flex-1">
                       <p className="text-sm font-medium">{activity.action}</p>
-                      <p className="text-xs text-slate-500">{activity.domain}</p>
+                      <p className="text-xs text-slate-500">
+                        {activity.domain}
+                      </p>
                     </div>
                     <div className="text-right space-y-1">
-                      <Badge variant={activity.type === "blocked" ? "default" : "secondary"} className="text-xs">
+                      <Badge
+                        variant={
+                          activity.type === "blocked" ? "default" : "secondary"
+                        }
+                        className="text-xs"
+                      >
                         {activity.type === "blocked" ? "Blocked" : "Filtered"}
                       </Badge>
                       <div className="text-xs text-slate-500">
@@ -244,11 +276,13 @@ export default function Index() {
                   className="mt-1"
                 />
               </div>
-              
+
               <div>
                 <Label>Server Status</Label>
                 <div className="mt-1 flex items-center gap-2">
-                  <div className={`w-2 h-2 rounded-full ${proxyStatus === "running" ? "bg-emerald-500" : "bg-slate-400"}`}></div>
+                  <div
+                    className={`w-2 h-2 rounded-full ${proxyStatus === "running" ? "bg-emerald-500" : "bg-slate-400"}`}
+                  ></div>
                   <span className="text-sm capitalize">{proxyStatus}</span>
                 </div>
               </div>
