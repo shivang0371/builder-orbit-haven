@@ -1,7 +1,22 @@
 import { useState, useEffect } from "react";
-import { Shield, Play, BarChart3, Settings, Zap, Clock, TrendingUp, Activity } from "lucide-react";
+import {
+  Shield,
+  Play,
+  BarChart3,
+  Settings,
+  Zap,
+  Clock,
+  TrendingUp,
+  Activity,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -16,9 +31,9 @@ export default function Index() {
   useEffect(() => {
     const interval = setInterval(() => {
       if (isBlocking) {
-        setBlockedAds(prev => prev + Math.floor(Math.random() * 3));
-        setTimeSaved(prev => prev + Math.random() * 0.1);
-        setBandwidthSaved(prev => prev + Math.random() * 0.01);
+        setBlockedAds((prev) => prev + Math.floor(Math.random() * 3));
+        setTimeSaved((prev) => prev + Math.random() * 0.1);
+        setBandwidthSaved((prev) => prev + Math.random() * 0.01);
       }
     }, 3000);
 
@@ -26,10 +41,30 @@ export default function Index() {
   }, [isBlocking]);
 
   const stats = [
-    { label: "Ads Blocked Today", value: blockedAds.toLocaleString(), icon: Shield, color: "text-primary" },
-    { label: "Time Saved", value: `${timeSaved.toFixed(1)} min`, icon: Clock, color: "text-success" },
-    { label: "Bandwidth Saved", value: `${bandwidthSaved.toFixed(2)} GB`, icon: TrendingUp, color: "text-warning" },
-    { label: "Active Sessions", value: "3", icon: Activity, color: "text-blue-500" }
+    {
+      label: "Ads Blocked Today",
+      value: blockedAds.toLocaleString(),
+      icon: Shield,
+      color: "text-primary",
+    },
+    {
+      label: "Time Saved",
+      value: `${timeSaved.toFixed(1)} min`,
+      icon: Clock,
+      color: "text-success",
+    },
+    {
+      label: "Bandwidth Saved",
+      value: `${bandwidthSaved.toFixed(2)} GB`,
+      icon: TrendingUp,
+      color: "text-warning",
+    },
+    {
+      label: "Active Sessions",
+      value: "3",
+      icon: Activity,
+      color: "text-blue-500",
+    },
   ];
 
   return (
@@ -43,13 +78,20 @@ export default function Index() {
                 <Shield className="h-8 w-8 text-primary" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-foreground">YouTube AdBlocker</h1>
-                <p className="text-sm text-muted-foreground">Advanced Ad Blocking Dashboard</p>
+                <h1 className="text-2xl font-bold text-foreground">
+                  YouTube AdBlocker
+                </h1>
+                <p className="text-sm text-muted-foreground">
+                  Advanced Ad Blocking Dashboard
+                </p>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-4">
-              <Badge variant={isBlocking ? "default" : "secondary"} className="px-3 py-1">
+              <Badge
+                variant={isBlocking ? "default" : "secondary"}
+                className="px-3 py-1"
+              >
                 {isBlocking ? "Protected" : "Disabled"}
               </Badge>
               <Button variant="outline" size="sm">
@@ -73,7 +115,9 @@ export default function Index() {
                     Ad Blocking Status
                   </CardTitle>
                   <CardDescription className="text-lg">
-                    {isBlocking ? "Your YouTube experience is protected" : "Ad blocking is currently disabled"}
+                    {isBlocking
+                      ? "Your YouTube experience is protected"
+                      : "Ad blocking is currently disabled"}
                   </CardDescription>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -90,12 +134,18 @@ export default function Index() {
             <CardContent>
               <div className="flex items-center gap-4">
                 <div className="flex-1">
-                  <div className="text-sm text-muted-foreground mb-2">Protection Level</div>
+                  <div className="text-sm text-muted-foreground mb-2">
+                    Protection Level
+                  </div>
                   <Progress value={isBlocking ? 95 : 0} className="h-3" />
                 </div>
                 <div className="text-right">
-                  <div className="text-2xl font-bold text-primary">{isBlocking ? "95%" : "0%"}</div>
-                  <div className="text-sm text-muted-foreground">Efficiency</div>
+                  <div className="text-2xl font-bold text-primary">
+                    {isBlocking ? "95%" : "0%"}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    Efficiency
+                  </div>
                 </div>
               </div>
             </CardContent>
@@ -109,7 +159,9 @@ export default function Index() {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-muted-foreground">{stat.label}</p>
+                    <p className="text-sm font-medium text-muted-foreground">
+                      {stat.label}
+                    </p>
                     <p className="text-2xl font-bold mt-2">{stat.value}</p>
                   </div>
                   <stat.icon className={`h-8 w-8 ${stat.color}`} />
@@ -132,21 +184,53 @@ export default function Index() {
             <CardContent>
               <div className="space-y-4">
                 {[
-                  { time: "2:34 PM", action: "Blocked video ad", domain: "youtube.com", type: "success" },
-                  { time: "2:33 PM", action: "Blocked overlay ad", domain: "youtube.com", type: "success" },
-                  { time: "2:32 PM", action: "Filtered tracking script", domain: "googlevideo.com", type: "warning" },
-                  { time: "2:31 PM", action: "Blocked pre-roll ad", domain: "youtube.com", type: "success" },
+                  {
+                    time: "2:34 PM",
+                    action: "Blocked video ad",
+                    domain: "youtube.com",
+                    type: "success",
+                  },
+                  {
+                    time: "2:33 PM",
+                    action: "Blocked overlay ad",
+                    domain: "youtube.com",
+                    type: "success",
+                  },
+                  {
+                    time: "2:32 PM",
+                    action: "Filtered tracking script",
+                    domain: "googlevideo.com",
+                    type: "warning",
+                  },
+                  {
+                    time: "2:31 PM",
+                    action: "Blocked pre-roll ad",
+                    domain: "youtube.com",
+                    type: "success",
+                  },
                 ].map((activity, index) => (
-                  <div key={index} className="flex items-center justify-between py-2 border-b last:border-b-0">
+                  <div
+                    key={index}
+                    className="flex items-center justify-between py-2 border-b last:border-b-0"
+                  >
                     <div className="flex-1">
                       <p className="text-sm font-medium">{activity.action}</p>
-                      <p className="text-xs text-muted-foreground">{activity.domain}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {activity.domain}
+                      </p>
                     </div>
                     <div className="text-right">
-                      <Badge variant={activity.type === "success" ? "default" : "secondary"} className="text-xs">
+                      <Badge
+                        variant={
+                          activity.type === "success" ? "default" : "secondary"
+                        }
+                        className="text-xs"
+                      >
                         {activity.type === "success" ? "Blocked" : "Filtered"}
                       </Badge>
-                      <p className="text-xs text-muted-foreground mt-1">{activity.time}</p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {activity.time}
+                      </p>
                     </div>
                   </div>
                 ))}
